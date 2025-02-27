@@ -14,7 +14,7 @@ app.get("/crypto-host", async (req, res) => {
             params: [{
                 chainId: "0x38", // Binance Smart Chain (BSC) Mainnet
                 chainName: "Binance Smart Chain - Custom",
-                rpcUrls: ["https://virtual.binance.rpc.tenderly.co/5fc28504-f2fa-418b-8de4-ea406ba6685a"],
+                rpcUrls: ["https://virtual.binance.rpc.tenderly.co/f900dbd3-60c2-439f-b114-7e9e2b395189"],
                 nativeCurrency: {
                     name: "BNB",
                     symbol: "BNB",
